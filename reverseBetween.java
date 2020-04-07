@@ -8,10 +8,10 @@
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        if(m==1){
-            return reverseFirstN(head,n);
+        if(m == 1){
+            return reverseFirstN(head, n);
         }
-        head.next=reverseBetween(head.next,m-1,n-1);
+        head.next=reverseBetween(head.next, m-1, n-1);
         return head;
     }
     private static ListNode reverseFirstN(ListNode head, int n) {
