@@ -46,3 +46,23 @@ class Solution {
         return res;
     }
 }
+//改进版
+class Solution {
+    public int numberOfSubarrays(int[] nums, int k) {
+        int len = nums.length, res = 0;
+        ArrayList<Integer> index = new ArrayList<>();
+        index.add(-1);
+        for(int i = 0; i < len; i++) {
+            if ((nums[i] & 1)==1) {
+                index.add(i);
+            }
+        }
+        index.add(len);
+        int max = index.size();
+        for (int left=1, right=k; right < max-1; left++,right++) {
+            res += (index.get(left)-index.get(left-1))
+                *(index.get(right+1)-index.get(right));
+        }
+        return res;
+    }
+}
