@@ -37,8 +37,7 @@ class Solution {
             return true;
         }
         //只遍历完其中一棵囧~~
-        if ((s == null && t != null) 
-            || (s != null && t == null)) {
+        if (t == null || s == null) {
             return false;
         }
 

@@ -2,13 +2,13 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = new int[] {4, 8, 1, 3, 5};
         int len = arr.length;
-        quickSort(arr, 0, len-1);
+        quickSort(arr, 0, len - 1);
         System.out.println(Arrays.toString(arr));
     }
     public static void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             Random r = new Random();
-            swap(arr, start,start + r.nextInt(end - start + 1));
+            swap(arr, start, start + r.nextInt(end - start + 1));
             int x = arr[start], i = start, j = end;
             while (i < j) {
                 while (i < j && arr[j] >= x) {

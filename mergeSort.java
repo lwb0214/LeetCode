@@ -7,7 +7,7 @@ public class Main {
     }
     public static void mergeSort(int[] arr, int start, int end) {
         if (start >= end) return;
-        int mid = (start + end) / 2;
+        int mid = start + ((end - start) >> 1);
         mergeSort(arr, start, mid);
         mergeSort(arr, mid + 1, end);
 

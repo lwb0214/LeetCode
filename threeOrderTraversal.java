@@ -8,6 +8,7 @@
  * }
  */
  class Solution {
+	 
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res=new ArrayList<>();
         Deque<TreeNode> stack=new LinkedList<>();
@@ -27,9 +28,7 @@
 
         return res;
     }
-}
 
-class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res=new ArrayList<>();
         Deque<TreeNode> stack=new LinkedList<>();
@@ -49,9 +48,7 @@ class Solution {
 
         return res;
     }
-}
 
-class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         LinkedList<Integer> res=new LinkedList<>();
         Deque<TreeNode> stack=new LinkedList<>();
