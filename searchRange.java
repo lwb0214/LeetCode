@@ -8,6 +8,7 @@
  */
 //二分法典范
 class Solution {
+	
     public int[] searchRange(int[] nums, int target) {
         int[] res = new int[] {-1, -1};
         // 特判
@@ -19,6 +20,7 @@ class Solution {
 
         return res;
     }
+	
     public int searchLeft (int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         while (left <= right) {
@@ -37,6 +39,7 @@ class Solution {
             return -1;
         return left;
     }
+	
     public int searchRight(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         while (left <= right) {
@@ -55,4 +58,5 @@ class Solution {
             return -1;
         return right;
     }
+	
 }

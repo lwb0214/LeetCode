@@ -1,10 +1,12 @@
 public class Main {
+	
     public static void main(String[] args) {
         int[] arr = new int[] {4, 8, 1, 3, 5};
         int len = arr.length;
-        mergeSort(arr,0, len-1);
+        mergeSort(arr,0, len - 1);
         System.out.println(Arrays.toString(arr));
     }
+	
     public static void mergeSort(int[] arr, int start, int end) {
         if (start >= end) return;
         int mid = start + ((end - start) >> 1);
@@ -24,4 +26,5 @@ public class Main {
         }
         System.arraycopy(temp, 0, arr, start, end - start + 1);
     }
+	
 }

@@ -1,10 +1,12 @@
 public class Main {
+	
     public static void main(String[] args) {
         int[] arr = new int[] {4, 8, 1, 3, 5};
         int len = arr.length;
         quickSort(arr, 0, len - 1);
         System.out.println(Arrays.toString(arr));
     }
+	
     public static void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             Random r = new Random();
@@ -31,10 +33,12 @@ public class Main {
             quickSort(arr, i+1, end);
         }
     }
+	
     public static void swap(int[] arr, int i , int j) {
         if (i == j) return;
         arr[i] = arr[i] - arr[j];
         arr[j] = arr[i] + arr[j];
         arr[i] = arr[j] - arr[i];
     }
+	
 }

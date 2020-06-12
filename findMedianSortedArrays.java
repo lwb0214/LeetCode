@@ -1,58 +1,35 @@
+/**
+ * 给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
+ * 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+ * 你可以假设 nums1 和 nums2 不会同时为空。
+ */
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int len1=nums1.length;
-        int len2=nums2.length;
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+        //对短的数组二分
+        if (n1 > n2)
+            return findMedianSortedArrays(nums2, nums1);
+        int k = (n1 + n2 + 1) >>> 1;
+        int left = 0;
+        int right = n1;
+        while (left < right) {
+            int m1 = (left + right) >>> 1;
+            int m2 = k - m1;
+            if (nums1[m1] < nums2[m2 - 1])
+                left = m1 + 1;
+            else
+                right = m1;
+        }
+        int m1 = left;
+        int m2 = k - left;
+        int c1 = Math.max(m1 <= 0 ? Integer.MIN_VALUE : nums1[m1 - 1],
+                         m2 <= 0 ? Integer.MIN_VALUE : nums2[m2 - 1]);
+        if (((n1 + n2) & 1) == 1)
+            return c1;
+        int c2 = Math.min(m1 >= n1 ? Integer.MAX_VALUE :nums1[m1],
+                         m2 >= n2 ? Integer.MAX_VALUE : nums2[m2]);
+        return (c1 + c2) * 0.5;
         
-        if(len2<len1){  //对短的数组二分
-            int[] temp=nums2;
-            nums2=nums1;
-            nums1=temp;
-            len1=nums1.length;		//数组交换后要更新长度
-            len2=nums2.length;
-        }
-        int half=(len1+len2+1)/2;
-        boolean even=((len1+len2)%2)==0?true:false;
-
-        int start=0,end=len1,apart=0,bpart=0;
-        //目标：使nums1[apart-1]<=nums2[bpart]且nums2[bpart-1]<=nums1[apart]
-        while(start<=end){
-            apart=(start+end)/2;    //二分法，aprt的值=数组1apart左侧元素个数
-            bpart=half-apart;
-            if(apart>start && nums1[apart-1]>nums2[bpart]){
-                end=apart-1;
-            }
-            else if(apart<end && nums1[apart]<nums2[bpart-1]){
-                start=apart+1;
-            }
-            else{
-                double leftMax=0;
-                if(apart==0){ //数组1中最小的元素都比bpart左侧最大元素大
-                    leftMax=nums2[bpart-1];
-                }
-                else if(bpart==0){ //数组2中最小的元素都比apart左侧最大元素大
-                    leftMax=nums1[apart-1];
-                }
-                else{
-                    leftMax=Math.max(nums1[apart-1],nums2[bpart-1]);
-                }
-                if(!even){
-                    return leftMax;
-                }
-
-                double minRight=0;
-                if(apart==len1){
-                    minRight=nums2[bpart];
-                }
-                else if(bpart==len2){
-                    minRight=nums1[apart];
-                }
-                else{
-                    minRight=Math.min(nums2[bpart],nums1[apart]);
-                }
-                return (leftMax+minRight)/2.0;
-            }
-        }
-        return -1.0;
-    } 
+    }
 }
-
