@@ -19,9 +19,10 @@
 
  */
 class Solution {
+	
     public ListNode mergeKLists(ListNode[] lists) {
-		//PriorityQueue是一个小根堆
-        //compareTo(n1.val, n2.val)
+		// PriorityQueue是一个小根堆
+        // compare(n1.val, n2.val)
         Queue<ListNode> pq = new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
 
         for (ListNode node:lists) {
@@ -43,11 +44,9 @@ class Solution {
         
         return dummyHead.next;
     }
-}
-
-//分治法
-class Solution {
-    public ListNode mergeKLists(ListNode[] lists) {
+	
+	// 分治法
+	public ListNode mergeKLists2(ListNode[] lists) {
         if (lists.length == 0) {
             return null;
         }
@@ -84,4 +83,5 @@ class Solution {
 
         return dummyHead.next;
     }
+	
 }
